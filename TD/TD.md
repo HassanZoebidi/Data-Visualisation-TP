@@ -46,6 +46,15 @@ A digital marketing company wants to analyze online advertising campaigns across
 
 #### Dimension Tables
 
+**Product Dimension**
+
+| Attribute   | Meaning                                |
+|-------------|-----------------------------------------|
+| ProductID   | Unique product identifier               |
+| Category    | Product category (Electronics, Clothing…) |
+| Brand       | Brand name                              |
+| PriceRange  | Pricing segment (Low, Medium, High)     |
+
 **Campaign Dimension**
 | Attribute | Meaning |
 |-----------|---------|
@@ -84,10 +93,14 @@ A digital marketing company wants to analyze online advertising campaigns across
 | Month | Month number |
 | Year | Year |
 
+
+
+
 #### Fact Table
 **AdPerformance Fact Table**
 | Attribute | Type | Meaning |
 |-----------|------|---------|
+| ProductID (FK) | Dimension link | |
 | CampaignID (FK) | Dimension link | |
 | AdGroupID (FK) | Dimension link | |
 | CreativeID (FK) | Dimension link | |
@@ -112,11 +125,16 @@ Draw the Snowflake Schema with normalized dimensions:
 - Geography → Country table + City table
 - Date → Year table + Month table + Day table
 - Campaign → Platform as separate dimension
+- Product → Brand table + Category table
 Show normalized hierarchy and all FK/PK relationships
 
 **3. Queries**
 - Total spend per campaign per month
+- Conversions per brand grouped by platform 
 - Click-Through Rate (CTR) by audience gender (CTR = Clicks / Impressions)
 - Total number of conversions per city for video ads
+- Top 5 products (ProductID) with the highest CTR
 - Cost per conversion for each platform (Cost per conversion = Spend / Conversions)
 - Total impressions for the 18-24 age group during Q2
+- Top performing product category per month (based on conversions)
+ 
